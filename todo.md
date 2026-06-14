@@ -1,0 +1,14 @@
+- [ ] Watch Cosmos - A spacetime Odyssey
+- [ ] Upload all the Osho Audio Discourses to GDrive
+- [ ] Read Hindi NCERT books
+- [ ] Learn the Go Programming Language and make the font renderer project
+- [ ] See the Data-to-Video project and which components are required for this.
+- [ ] Learn about the system design
+- [ ] Learn about the RAG pipeline and make a project around it
+- [ ] Read the book `Neural Network and Deep Learning` by `Michael Nielson`
+- [ ] Watch the andrej kaparthy's playlist on neural networks
+- [ ] See how Quant Reseachers makes a model for prediction and see more about this domain
+- [ ] Complete the embeeded project, and buy some of the hardware and work on them
+- [ ] See about the advanced pieces of modern hardware (robotics, lasers, transmitters and many more) and how they work and their use-cases
+- [ ] Learn about the chip design and learn some HDL such as verilog. Could see the Nand2Tetris course.
+

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadhana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="marked.min.js"></script>
+    <style>
+      /* ── Reset ───────────────────────────────────── */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { font-size: 20px; scroll-behavior: smooth; }
+
+      /* ── Light tokens ─────────────────────────────── */
+      :root {
+	  --bg:       #f9f8f5;
+	  --ink:      #181714;
+	  --muted:    #8a8278;
+	  --faint:    #b5afa6;
+	  --accent:   #2563eb;
+	  --rule:     #e6e0d8;
+	  --code-bg:  #edeae4;
+	  --code-ink: #b83c14;
+	  --max:      700px;
+	  --aside-w:  88px;
+	  --gap:      52px;
+      }
+
+      /* ── Dark tokens — Warm Dark ─────────────────── */
+      [data-theme="dark"] {
+	  --bg:       #141210;
+	  --ink:      #e8e2d8;
+	  --muted:    #7a7168;
+	  --faint:    #4e4840;
+	  --accent:   #d4922a;
+	  --rule:     #3a3028;
+	  --code-bg:  #1e1b17;
+	  --code-ink: #d4922a;
+      }
+
+      /* ── Base ─────────────────────────────────────── */
+      body {
+	  background: var(--bg);
+	  color: var(--ink);
+	  font-family: 'Fraunces', Georgia, serif;
+	  line-height: 1.8;
+	  padding: 0 32px;
+	  -webkit-font-smoothing: antialiased;
+	  transition: background 0.3s, color 0.3s;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      .view { animation: fadeUp 0.22s ease both; }
+      @keyframes fadeUp {
+	  from { opacity: 0; transform: translateY(8px); }
+	  to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ════════════════════════════════════════════════
+   NAV
+════════════════════════════════════════════════ */
+      nav {
+	  max-width: var(--max);
+	  margin: 0 auto;
+	  padding: 32px 0 0;
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+      }
+
+      .nav-brand {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.68rem;
+	  letter-spacing: 0.08em;
+	  text-transform: uppercase;
+	  color: var(--muted);
+	  cursor: pointer;
+	  transition: color 0.15s;
+      }
+      .nav-brand:hover { color: var(--ink); }
+      [data-theme="dark"] .nav-brand { color: var(--accent); }
+
+      .nav-links { display: flex; gap: 24px; align-items: center; }
+
+      .nav-link {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.62rem;
+	  letter-spacing: 0.07em;
+	  text-transform: uppercase;
+	  color: var(--muted);
+	  cursor: pointer;
+	  padding-bottom: 2px;
+	  border-bottom: 1px solid transparent;
+	  transition: color 0.15s;
+      }
+      .nav-link:hover { color: var(--ink); }
+      .nav-link.active { color: var(--ink); border-bottom-color: var(--ink); }
+      [data-theme="dark"] .nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+      .theme-btn {
+	  background: none;
+	  border: 1px solid var(--rule);
+	  color: var(--muted);
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  letter-spacing: 0.05em;
+	  padding: 3px 10px;
+	  border-radius: 20px;
+	  cursor: pointer;
+	  transition: all 0.15s;
+      }
+      .theme-btn:hover { color: var(--ink); border-color: var(--faint); }
+
+      /* ════════════════════════════════════════════════
+   SHARED LAYOUT HELPERS
+════════════════════════════════════════════════ */
+      .page {
+	  max-width: var(--max);
+	  margin: 0 auto;
+      }
+
+      .section-label {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  letter-spacing: 0.1em;
+	  text-transform: uppercase;
+	  color: var(--faint);
+	  padding: 44px 0 18px;
+      }
+      [data-theme="dark"] .section-label { color: var(--accent); opacity: 0.7; }
+
+      /* ════════════════════════════════════════════════
+   HOME
+════════════════════════════════════════════════ */
+      .home-header {
+	  padding: 72px 0 56px;
+	  border-bottom: 1px solid var(--rule);
+      }
+
+      .home-title {
+	  font-size: 2rem;
+	  font-weight: 300;
+	  font-style: italic;
+	  line-height: 1.25;
+	  letter-spacing: -0.02em;
+	  margin-bottom: 12px;
+      }
+
+      .home-sub {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.62rem;
+	  letter-spacing: 0.05em;
+	  color: var(--muted);
+      }
+
+      .home-all {
+	  display: inline-block;
+	  margin-top: 24px;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  letter-spacing: 0.05em;
+	  color: var(--accent);
+	  cursor: pointer;
+	  border-bottom: 1px solid transparent;
+	  padding-bottom: 1px;
+	  transition: border-color 0.15s;
+      }
+      .home-all:hover { border-bottom-color: var(--accent); }
+
+      /* ════════════════════════════════════════════════
+   ENTRY ROW (used on home + archive pages)
+════════════════════════════════════════════════ */
+      .entry-row {
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+	  padding: 26px 0;
+	  border-top: 1px solid var(--rule);
+	  cursor: pointer;
+	  transition: opacity 0.15s;
+      }
+      .entry-row:hover { opacity: 0.6; }
+      [data-theme="dark"] .entry-row:hover .entry-row-title { color: var(--accent); }
+
+      .entry-row-date {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  color: var(--muted);
+	  letter-spacing: 0.03em;
+	  padding-top: 3px;
+	  line-height: 1.55;
+      }
+
+      .entry-row-title {
+	  font-size: 0.97rem;
+	  font-weight: 400;
+	  color: var(--ink);
+	  line-height: 1.4;
+	  margin-bottom: 5px;
+	  transition: color 0.15s;
+      }
+
+      .entry-row-excerpt {
+	  font-size: 0.8rem;
+	  color: var(--muted);
+	  font-style: italic;
+	  font-weight: 300;
+	  line-height: 1.5;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+      }
+
+      .entry-row-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+      .row-tag {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.55rem;
+	  letter-spacing: 0.04em;
+	  color: var(--faint);
+      }
+      .row-tag::before { content: '#'; }
+
+      /* ════════════════════════════════════════════════
+   ARCHIVE PAGES (journal / posts)
+════════════════════════════════════════════════ */
+      .archive-header {
+	  padding: 64px 0 36px;
+	  border-bottom: 1px solid var(--rule);
+      }
+
+      .archive-title {
+	  font-size: 0.97rem;
+	  font-weight: 400;
+	  font-style: italic;
+	  color: var(--muted);
+	  margin-bottom: 24px;
+      }
+
+      /* Controls */
+      .controls {
+	  display: flex;
+	  align-items: flex-start;
+	  justify-content: space-between;
+	  gap: 16px;
+	  flex-wrap: wrap;
+      }
+
+      .filter-label, .sort-label {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.55rem;
+	  letter-spacing: 0.08em;
+	  text-transform: uppercase;
+	  color: var(--faint);
+	  margin-bottom: 8px;
+      }
+
+      .tag-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+
+      .tag-btn {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  letter-spacing: 0.04em;
+	  padding: 3px 10px;
+	  border-radius: 20px;
+	  border: 1px solid var(--rule);
+	  background: transparent;
+	  color: var(--muted);
+	  cursor: pointer;
+	  transition: all 0.15s;
+      }
+      .tag-btn:hover { border-color: var(--faint); color: var(--ink); }
+      .tag-btn.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+      [data-theme="dark"] .tag-btn.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+      .sort-area { display: flex; flex-direction: column; align-items: flex-end; }
+
+      .sort-toggle {
+	  display: flex;
+	  border: 1px solid var(--rule);
+	  border-radius: 20px;
+	  overflow: hidden;
+      }
+
+      .sort-btn {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  letter-spacing: 0.03em;
+	  padding: 3px 12px;
+	  border: none;
+	  background: transparent;
+	  color: var(--muted);
+	  cursor: pointer;
+	  transition: all 0.15s;
+      }
+      .sort-btn.active { background: var(--ink); color: var(--bg); }
+      [data-theme="dark"] .sort-btn.active { background: var(--accent); color: var(--bg); }
+
+      .results-meta {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  color: var(--faint);
+	  letter-spacing: 0.04em;
+	  padding: 16px 0 0;
+      }
+
+      .no-results {
+	  padding: 60px 0;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.65rem;
+	  color: var(--faint);
+	  text-align: center;
+	  letter-spacing: 0.04em;
+      }
+
+      /* ════════════════════════════════════════════════
+   SINGLE ENTRY VIEW
+════════════════════════════════════════════════ */
+      .back-link {
+	  display: inline-flex;
+	  align-items: center;
+	  gap: 6px;
+	  padding: 44px 0 0;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  letter-spacing: 0.06em;
+	  color: var(--muted);
+	  cursor: pointer;
+	  transition: color 0.15s;
+      }
+      .back-link:hover { color: var(--ink); }
+      .back-link::before { content: '←'; }
+      [data-theme="dark"] .back-link:hover { color: var(--accent); }
+
+      .single-header {
+	  padding: 36px 0 44px;
+	  border-bottom: 1px solid var(--rule);
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+      }
+
+      .single-aside { padding-top: 6px; }
+
+      .single-date {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  color: var(--muted);
+	  letter-spacing: 0.03em;
+	  line-height: 1.6;
+      }
+
+      .single-tags { margin-top: 10px; display: flex; flex-direction: column; gap: 3px; }
+      .single-tag {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.56rem;
+	  color: var(--accent);
+	  letter-spacing: 0.05em;
+	  cursor: pointer;
+      }
+      .single-tag::before { content: '#'; }
+      .single-tag:hover { text-decoration: underline; }
+
+      .single-title {
+	  font-size: 1.6rem;
+	  font-weight: 300;
+	  font-style: italic;
+	  line-height: 1.3;
+	  letter-spacing: -0.02em;
+	  align-self: end;
+      }
+
+      /* Body */
+      .single-body-wrap {
+	  padding: 48px 0 0;
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+      }
+
+      .single-body {
+	  font-size: 1rem;
+	  font-weight: 300;
+	  line-height: 1.88;
+      }
+
+      .single-body p { margin-bottom: 1.2em; }
+      .single-body p:last-child { margin-bottom: 0; }
+      .single-body em { font-style: italic; }
+      .single-body strong { font-weight: 500; }
+
+      .single-body h1, .single-body h2, .single-body h3 {
+	  font-weight: 500;
+	  font-style: normal;
+	  line-height: 1.35;
+	  margin: 1.6em 0 0.5em;
+      }
+      .single-body h1 { font-size: 1.15rem; }
+      .single-body h2 { font-size: 1rem; }
+      .single-body h3 { font-size: 0.9rem; }
+
+      .single-body blockquote {
+	  border-left: 1.5px solid var(--accent);
+	  padding-left: 20px;
+	  margin: 1.5em 0;
+	  color: var(--muted);
+	  font-style: italic;
+      }
+
+      .single-body ul, .single-body ol {
+	  padding-left: 1.2em;
+	  margin-bottom: 1.2em;
+      }
+      .single-body li { margin-bottom: 0.28em; }
+
+      .single-body code {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.8em;
+	  background: var(--code-bg);
+	  padding: 1px 5px;
+	  border-radius: 3px;
+	  color: var(--code-ink);
+      }
+
+      .single-body pre {
+	  background: var(--code-bg);
+	  padding: 20px 24px;
+	  border-radius: 6px;
+	  margin: 1.4em 0;
+	  overflow-x: auto;
+	  border: 1px solid var(--rule);
+      }
+      .single-body pre code {
+	  background: none;
+	  padding: 0;
+	  color: var(--ink);
+	  font-size: 0.78rem;
+	  line-height: 1.65;
+	  border-radius: 0;
+      }
+      [data-theme="dark"] .single-body pre code { color: var(--ink); }
+
+      .single-body hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
+
+      .single-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+      .single-body img { max-width: 100%; height: auto; border-radius: 4px; margin: 1.2em 0; display: block; }
+
+      /* Prev / next nav */
+      .entry-nav {
+	  margin-top: 68px;
+	  padding: 32px 0 80px;
+	  border-top: 1px solid var(--rule);
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+      }
+
+      .entry-nav-inner {
+	  display: flex;
+	  justify-content: space-between;
+	  gap: 20px;
+      }
+
+      .entry-nav-link {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  letter-spacing: 0.04em;
+	  color: var(--muted);
+	  cursor: pointer;
+	  transition: color 0.15s;
+	  max-width: 46%;
+      }
+      .entry-nav-link:hover { color: var(--accent); }
+
+      .entry-nav-dir {
+	  display: block;
+	  font-size: 0.52rem;
+	  letter-spacing: 0.08em;
+	  text-transform: uppercase;
+	  color: var(--faint);
+	  margin-bottom: 4px;
+      }
+
+      .entry-nav-name {
+	  font-family: 'Fraunces', serif;
+	  font-size: 0.85rem;
+	  font-weight: 300;
+	  font-style: italic;
+	  color: var(--ink);
+	  line-height: 1.4;
+      }
+
+      .entry-nav-link.next { text-align: right; }
+
+      /* ════════════════════════════════════════════════
+   TODO
+════════════════════════════════════════════════ */
+      .todo-header {
+	  padding: 64px 0 48px;
+	  border-bottom: 1px solid var(--rule);
+      }
+
+      .todo-header-title {
+	  font-size: 0.97rem;
+	  font-weight: 400;
+	  font-style: italic;
+	  color: var(--muted);
+      }
+
+      .todo-list {
+	  list-style: none;
+	  padding: 0;
+      }
+
+      .todo-item {
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+	  padding: 20px 0;
+	  border-top: 1px solid var(--rule);
+	  align-items: baseline;
+      }
+
+      .todo-item-marker {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.6rem;
+	  color: var(--faint);
+	  padding-top: 3px;
+	  letter-spacing: 0.03em;
+	  user-select: none;
+      }
+
+      .todo-item-text {
+	  font-size: 0.97rem;
+	  font-weight: 300;
+	  color: var(--ink);
+	  line-height: 1.5;
+      }
+
+      /* Done section — muted and struck */
+      .todo-item.done .todo-item-text {
+	  text-decoration: line-through;
+	  color: var(--faint);
+      }
+
+      .todo-item.done .todo-item-marker {
+	  color: var(--accent);
+	  opacity: 0.6;
+      }
+
+      .todo-empty {
+	  padding: 40px 0;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.62rem;
+	  color: var(--faint);
+	  letter-spacing: 0.04em;
+	  grid-column: 2;
+      }
+
+      /* ════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════ */
+      footer {
+	  max-width: var(--max);
+	  margin: 0 auto;
+	  padding: 44px 0 64px;
+	  border-top: 1px solid var(--rule);
+	  display: grid;
+	  grid-template-columns: var(--aside-w) 1fr;
+	  gap: 0 var(--gap);
+      }
+
+      .footer-inner {
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.58rem;
+	  color: var(--faint);
+	  letter-spacing: 0.04em;
+      }
+
+      /* ════════════════════════════════════════════════
+   LOADING / ERROR
+════════════════════════════════════════════════ */
+      #app-loading {
+	  max-width: var(--max);
+	  margin: 120px auto 0;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.65rem;
+	  color: var(--faint);
+	  letter-spacing: 0.05em;
+      }
+
+      #app-error {
+	  max-width: var(--max);
+	  margin: 120px auto 0;
+	  font-family: 'DM Mono', monospace;
+	  font-size: 0.65rem;
+	  color: #b83c14;
+	  letter-spacing: 0.04em;
+	  display: none;
+      }
+
+      /* ════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════ */
+      @media (max-width: 560px) {
+	  body { padding: 0 20px; }
+	  html { font-size: 17px; }
+
+	  .entry-row,
+	  .single-header,
+	  .single-body-wrap,
+	  .entry-nav,
+	  footer { grid-template-columns: 1fr; gap: 8px 0; }
+
+	  .single-aside { display: flex; gap: 14px; align-items: baseline; }
+	  .single-tags { flex-direction: row; margin-top: 0; }
+	  .single-body-wrap > div:first-child { display: none; }
+	  .single-header { padding: 28px 0 32px; }
+
+	  .home-header { padding: 52px 0 40px; }
+	  .home-title { font-size: 1.6rem; }
+
+	  .controls { flex-direction: column; }
+	  .sort-area { align-items: flex-start; }
+
+	  .entry-nav-inner { flex-direction: column; }
+	  .entry-nav-link.next { text-align: left; }
+
+	  footer { grid-template-columns: 1fr; }
+	  footer > div:first-child { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav>
+      <span class="nav-brand" onclick="location.hash=''">Sadhana</span>
+      <div class="nav-links">
+	<span class="nav-link" data-view="home"    onclick="location.hash=''">Home</span>
+	<span class="nav-link" data-view="journal" onclick="navigate('journal')">Journal</span>
+	<span class="nav-link" data-view="posts"   onclick="navigate('posts')">Posts</span>
+	<span class="nav-link" data-view="todo"    onclick="navigate('todo')">Todo</span>
+	<button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☽ Dark</button>
+      </div>
+    </nav>
+
+    <div id="app-loading">Loading…</div>
+    <div id="app-error"></div>
+    <div id="app" style="display:none"></div>
+
+    <footer id="site-footer" style="display:none">
+      <div></div>
+      <div class="footer-inner">Sadhana · © <span id="footer-year"></span></div>
+    </footer>
+
+    <script>
+      /* ════════════════════════════════════════════════
+	 CONFIG
+	 ════════════════════════════════════════════════ */
+      const CONFIG = {
+	  siteTitle:    'Sadhana',
+	  homeDesc:     'A daily practice — of living, thinking, and making.',
+	  recentJournal: 3,
+	  recentPosts:   2,
+	  journalUrl:   'journal.md',
+	  postsUrl:     'posts.md',
+	  todoUrl:      'todo.md',
+      };
+
+      /* ════════════════════════════════════════════════
+	 STATE
+	 ════════════════════════════════════════════════ */
+      let journals    = [];
+      let posts       = [];
+      let todos       = { pending: [], done: [] };
+      let activeTags  = new Set();
+      let sortOrder   = 'newest';
+      let currentView = 'home';
+
+      /* ════════════════════════════════════════════════
+	 PARSER
+	 ════════════════════════════════════════════════ */
+      function slugify(str) {
+	  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      }
+
+      function parseFrontmatter(block) {
+	  const meta = {};
+	  block.split('\n').forEach(line => {
+	      const m = line.match(/^(\w+):\s*(.+)$/);
+	      if (m) meta[m[1].trim()] = m[2].trim();
+	  });
+	  return meta;
+      }
+
+      function parseFile(raw, type) {
+	  const chunks = raw.split(/^---$/m).map(s => s.trim()).filter(Boolean);
+	  const parsed = [];
+
+	  for (let i = 0; i < chunks.length; i += 2) {
+	      const meta = parseFrontmatter(chunks[i]);
+	      const body = chunks[i + 1] || '';
+	      const tags = meta.tags ? meta.tags.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+	      // Slug: journal = date only, post = title only
+	      const slug = type === 'journal'
+		    ? (meta.date || '').trim()
+		    : slugify(meta.title || String(i));
+
+	      // Excerpt: first plain paragraph
+	      const firstPara = body.split(/\n\n+/).find(p => {
+		  const t = p.trim();
+		  return t && !t.startsWith('>') && !t.startsWith('-') && !t.startsWith('*') && !t.startsWith('#') && !t.startsWith('`');
+	      }) || '';
+	      const excerpt = firstPara.replace(/[*_`#>]/g, '').trim().slice(0, 180);
+
+	      if (type === 'journal' && !meta.date) continue;
+	      if (type === 'post'    && !meta.title) continue;
+
+	      parsed.push({ type, date: meta.date || null, title: meta.title || null, slug, tags, body, excerpt });
+	  }
+
+	  if (type === 'journal') {
+	      parsed.sort((a, b) => new Date(b.date) - new Date(a.date));
+	  }
+
+	  return parsed;
+      }
+
+      function parseTodos(raw) {
+	  const pending = [];
+	  const done    = [];
+
+	  raw.split('\n').forEach(line => {
+	      const trimmed = line.trim();
+	      if (/^-\s*\[\s*\]\s+/.test(trimmed)) {
+		  const text = trimmed.replace(/^-\s*\[\s*\]\s+/, '').trim();
+		  if (text) pending.push(text);
+	      } else if (/^-\s*\[[xX]\]\s+/.test(trimmed)) {
+		  const text = trimmed.replace(/^-\s*\[[xX]\]\s+/, '').trim();
+		  if (text) done.push(text);
+	      }
+	  });
+
+	  return { pending, done };
+      }
+      function fmtShort(d) {
+	  return new Date(d + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+      }
+      function fmtYear(d) {
+	  return new Date(d + 'T00:00:00').getFullYear();
+      }
+      function fmtLong(d) {
+	  return new Date(d + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      /* ════════════════════════════════════════════════
+	 ROUTER
+	 ════════════════════════════════════════════════ */
+      function navigate(view, slug) {
+	  if (slug) location.hash = `#${view}/${slug}`;
+	  else      location.hash = `#${view}`;
+      }
+
+      function handleRoute() {
+	  const hash = location.hash.replace('#', '');
+
+	  // Reset tag filters on view change
+	  const newView = hash.split('/')[0] || 'home';
+	  if (newView !== currentView) activeTags = new Set();
+	  currentView = newView;
+
+	  if (hash.startsWith('journal/')) {
+	      renderSingle('journal', hash.slice(8));
+	  } else if (hash.startsWith('posts/')) {
+	      renderSingle('posts', hash.slice(6));
+	  } else if (hash === 'journal') {
+	      renderArchive('journal');
+	  } else if (hash === 'posts') {
+	      renderArchive('posts');
+	  } else if (hash === 'todo') {
+	      renderTodo();
+	  } else {
+	      renderHome();
+	      currentView = 'home';
+	  }
+
+	  updateNav(currentView);
+	  window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      function updateNav(view) {
+	  document.querySelectorAll('.nav-link').forEach(el => {
+	      el.classList.toggle('active', el.dataset.view === view);
+	  });
+      }
+
+      /* ════════════════════════════════════════════════
+	 ENTRY ROW HTML
+	 ════════════════════════════════════════════════ */
+      function entryRowHtml(e) {
+	  const isJournal = e.type === 'journal';
+	  const href      = isJournal ? `journal/${e.slug}` : `posts/${e.slug}`;
+	  const dateHtml  = isJournal
+		? `<div class="entry-row-date">${fmtShort(e.date)}<br>${fmtYear(e.date)}</div>`
+		: `<div class="entry-row-date"></div>`;
+	  const title = e.title || fmtLong(e.date);
+
+	  return `
+    <div class="entry-row" onclick="navigate('${isJournal ? 'journal' : 'posts'}','${e.slug}')">
+      ${dateHtml}
+      <div>
+        <div class="entry-row-title">${title}</div>
+        ${e.excerpt ? `<div class="entry-row-excerpt">${e.excerpt}</div>` : ''}
+        ${e.tags.length ? `<div class="entry-row-tags">${e.tags.map(t=>`<span class="row-tag">${t}</span>`).join('')}</div>` : ''}
+      </div>
+    </div>`;
+      }
+
+      /* ════════════════════════════════════════════════
+	 HOME
+	 ════════════════════════════════════════════════ */
+      function renderHome() {
+	  const recentJ = journals.slice(0, CONFIG.recentJournal);
+	  const recentP = posts.slice(0, CONFIG.recentPosts);
+
+	  mount(`
+  <div class="page view">
+    <div class="home-header">
+      <h1 class="home-title">${CONFIG.siteTitle}</h1>
+      <p class="home-sub">${CONFIG.homeDesc}</p>
+    </div>
+
+    <p class="section-label">Recent journal</p>
+    ${recentJ.map(entryRowHtml).join('')}
+    <span class="home-all" onclick="navigate('journal')">All journal entries (${journals.length}) -></span>
+
+    <p class="section-label">Recent posts</p>
+    ${recentP.map(entryRowHtml).join('')}
+    <span class="home-all" onclick="navigate('posts')" style="margin-bottom:60px">All posts (${posts.length}) -></span>
+</div>`);
+}
+
+/* ════════════════════════════════════════════════
+TODO
+════════════════════════════════════════════════ */
+function renderTodo() {
+const { pending, done } = todos;
+
+const todoItemHtml = (text, isDone) => `
+	<li class="todo-item ${isDone ? 'done' : ''}">
+	  <div class="todo-item-marker">${isDone ? '✓' : '○'}</div>
+	  <div class="todo-item-text">${text}</div>
+	</li>`;
+
+	mount(`
+	<div class="page view">
+	  <div class="todo-header">
+	    <p class="todo-header-title">${pending.length} pending · ${done.length} done</p>
+	  </div>
+
+	  <p class="section-label">Todo</p>
+	  <ul class="todo-list">
+	    ${pending.length
+            ? pending.map(t => todoItemHtml(t, false)).join('')
+            : `<li class="todo-item"><div class="todo-empty">Nothing pending.</div></li>`}
+	  </ul>
+
+	  <p class="section-label">Done</p>
+	  <ul class="todo-list">
+	    ${done.length
+            ? done.map(t => todoItemHtml(t, true)).join('')
+            : `<li class="todo-item"><div class="todo-empty">Nothing completed yet.</div></li>`}
+	  </ul>
+	</div>`);
+	}
+
+	/* ════════════════════════════════════════════════
+	ARCHIVE
+	════════════════════════════════════════════════ */
+	function allTagsFor(type) {
+	const src = type === 'journal' ? journals : posts;
+	const set = new Set();
+	src.forEach(e => e.tags.forEach(t => set.add(t)));
+	return [...set].sort();
+	}
+
+	function filteredEntries(type) {
+	let list = type === 'journal' ? [...journals] : [...posts];
+	if (activeTags.size > 0) list = list.filter(e => e.tags.some(t => activeTags.has(t)));
+	if (sortOrder === 'oldest') list.reverse();
+	return list;
+	}
+
+	function renderArchive(type) {
+	const tags    = allTagsFor(type);
+	const results = filteredEntries(type);
+	const total   = type === 'journal' ? journals.length : posts.length;
+	const label   = type === 'journal' ? 'journal entries' : 'posts';
+
+	mount(`
+	<div class="page view">
+	  <div class="archive-header">
+	    <p class="archive-title">${total} ${label}</p>
+	    <div class="controls">
+              <div>
+		<div class="filter-label">Filter by tag</div>
+		<div class="tag-filters">
+		  ${tags.map(t => `
+		  <button class="tag-btn ${activeTags.has(t) ? 'active' : ''}"
+			  onclick="toggleTag('${type}','${t}')">${t}</button>`).join('')}
+		</div>
+              </div>
+              ${type === 'journal' ? `
+              <div class="sort-area">
+		<div class="sort-label">Sort</div>
+		<div class="sort-toggle">
+		  <button class="sort-btn ${sortOrder==='newest'?'active':''}" onclick="setSort('${type}','newest')">Newest</button>
+		  <button class="sort-btn ${sortOrder==='oldest'?'active':''}" onclick="setSort('${type}','oldest')">Oldest</button>
+		</div>
+              </div>` : ''}
+	    </div>
+	    <div class="results-meta">
+              ${activeTags.size > 0
+              ? `${results.length} of ${total} · filtered by: ${[...activeTags].join(', ')}`
+              : `showing all ${results.length}`}
+	    </div>
+	  </div>
+
+	  ${results.length === 0
+	  ? `<div class="no-results">No entries match the selected tags.</div>`
+	  : results.map(entryRowHtml).join('')}
+	</div>`);
+	}
+
+	function toggleTag(type, tag) {
+	activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
+	renderArchive(type);
+	}
+
+	function setSort(type, order) {
+	sortOrder = order;
+	renderArchive(type);
+	}
+
+	/* ════════════════════════════════════════════════
+	SINGLE
+	════════════════════════════════════════════════ */
+	function renderSingle(type, slug) {
+	const list  = type === 'journal' ? journals : posts;
+	const idx   = list.findIndex(e => e.slug === slug);
+	const entry = list[idx];
+
+	if (!entry) {
+	mount(`<div class="page view" style="padding:80px 0;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--faint)">Entry not found.</div>`);
+	return;
+	}
+
+	const bodyHtml = marked.parse(entry.body);
+	const prev     = list[idx - 1] || null;
+	const next     = list[idx + 1] || null;
+	const backView = type === 'journal' ? 'journal' : 'posts';
+	const backLabel = type === 'journal' ? 'Journal' : 'Posts';
+	const title    = entry.title || (entry.date ? fmtLong(entry.date) : 'Untitled');
+
+	mount(`
+	<div class="page view">
+	  <span class="back-link" onclick="navigate('${backView}')">${backLabel}</span>
+
+	  <div class="single-header">
+	    <div class="single-aside">
+              ${entry.date ? `<div class="single-date">${fmtLong(entry.date)}</div>` : ''}
+              ${entry.tags.length ? `
+              <div class="single-tags">
+		${entry.tags.map(t=>`<span class="single-tag" onclick="activeTags=new Set(['${t}']);navigate('${backView}')">${t}</span>`).join('')}
+              </div>` : ''}
+	    </div>
+	    <h1 class="single-title">${title}</h1>
+	  </div>
+
+	  <div class="single-body-wrap">
+	    <div></div>
+	    <div class="single-body">${bodyHtml}</div>
+	  </div>
+
+	  <div class="entry-nav">
+	    <div></div>
+	    <div class="entry-nav-inner">
+              ${next ? `
+              <div class="entry-nav-link prev" onclick="navigate('${backView}','${next.slug}')">
+		<span class="entry-nav-dir">← ${type === 'journal' ? 'Older' : 'Previous'}</span>
+		<span class="entry-nav-name">${next.title || fmtLong(next.date)}</span>
+              </div>` : '<div></div>'}
+              ${prev ? `
+              <div class="entry-nav-link next" onclick="navigate('${backView}','${prev.slug}')">
+		<span class="entry-nav-dir">${type === 'journal' ? 'Newer' : 'Next'} -></span>
+		<span class="entry-nav-name">${prev.title || fmtLong(prev.date)}</span>
+              </div>` : '<div></div>'}
+	    </div>
+	  </div>
+	</div>`);
+	}
+
+	/* ════════════════════════════════════════════════
+	MOUNT
+	════════════════════════════════════════════════ */
+	function mount(html) {
+	document.getElementById('app').innerHTML = html;
+	}
+
+	/* ════════════════════════════════════════════════
+	THEME
+	════════════════════════════════════════════════ */
+	function applyTheme(theme) {
+	document.body.dataset.theme = theme;
+	document.getElementById('theme-btn').textContent = theme === 'dark' ? '☀ Light' : '☽ Dark';
+	localStorage.setItem('sadhana-theme', theme);
+	}
+
+	function toggleTheme() {
+	applyTheme(document.body.dataset.theme === 'dark' ? 'light' : 'dark');
+	}
+
+	/* ════════════════════════════════════════════════
+	BOOT
+	════════════════════════════════════════════════ */
+	async function boot() {
+	document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+	// Restore theme
+	const savedTheme = localStorage.getItem('sadhana-theme') || 'light';
+	applyTheme(savedTheme);
+
+	if (typeof marked === 'undefined') {
+	showError('marked.js failed to load. Make sure marked.min.js is in the same folder as index.html.');
+	return;
+	}
+
+	try {
+	const [jRes, pRes, tRes] = await Promise.all([
+	fetch(CONFIG.journalUrl),
+	fetch(CONFIG.postsUrl),
+	fetch(CONFIG.todoUrl),
+	]);
+
+	if (!jRes.ok) throw new Error(`Could not load journal.md — HTTP ${jRes.status}`);
+	if (!pRes.ok) throw new Error(`Could not load posts.md — HTTP ${pRes.status}`);
+	if (!tRes.ok) throw new Error(`Could not load todo.md — HTTP ${tRes.status}`);
+
+	const [jRaw, pRaw, tRaw] = await Promise.all([jRes.text(), pRes.text(), tRes.text()]);
+	journals = parseFile(jRaw, 'journal');
+	posts    = parseFile(pRaw, 'post');
+	todos    = parseTodos(tRaw);
+	} catch (err) {
+	showError(err.message);
+	return;
+	}
+
+	document.getElementById('app-loading').style.display = 'none';
+	document.getElementById('app').style.display         = 'block';
+	document.getElementById('site-footer').style.display = 'grid';
+
+	window.addEventListener('hashchange', handleRoute);
+	handleRoute();
+	}
+
+	function showError(msg) {
+	document.getElementById('app-loading').style.display = 'none';
+	const el = document.getElementById('app-error');
+	el.style.display = 'block';
+	el.textContent   = `Error: ${msg}`;
+	}
+
+	boot();
+    </script>
+  </body>
+</html>

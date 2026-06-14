@@ -4,7 +4,7 @@ title: Lost in Life
 tags: reflection
 ---
 
-Yaay! I have realized many things in my life, but still I am very lost and confused. I am not sure about anything. I don't know what to do. I don't know whatever I am doing is right or wrong. So, I decided to put down the things that I want to do and what I am doing right now.
+I have realized many things in my life, but still I am very lost and confused. I am not sure about anything. I don't know what to do. I don't know whatever I am doing is right or wrong. So, I decided to put down the things that I want to do and what I am doing right now.
 
 I try to do the stm32 projects and learn it's peripherals. After that I know I have do the bare-metal RTOS and BootLoader. But I can't do it for very long time. I think my daily time I put for this is only 1-hour. I daily think that I have to study 10+ hours, but somehow I can't get more than 1-2 hours. Every night, I just convince myself that tomorrow would be the day, but it's always the same. And even if I somehow study for 5-6 hours, it would be a one day thing. I don't know what to do.
 

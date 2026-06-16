@@ -1,75 +1,38 @@
 ---
-date: 2026-05-15
-title: Lost in Life
+date: 2026-06-17
+title: New Birth
 tags: reflection
 ---
+It's 2AM in the morning when I'm writing this. I have experienced so much in
+life still so less. But everything is disconnected and very complex right now
+for me. I want to clarify and organize my life a little. Who would want a
+chaotic and unorganized life everytime, it's okay now and then. I don't mean I
+need a very organized and boring life, but a constructive system to live my life
+to the fullest.
 
-I have realized many things in my life, but still I am very lost and confused. I am not sure about anything. I don't know what to do. I don't know whatever I am doing is right or wrong. So, I decided to put down the things that I want to do and what I am doing right now.
+I am preparing for GATE2027 CSIT and DA. The Exam is going to conduct almost 7
+months later. But I don't want to give my 7months to a exam. I'm going to take
+these 7months and do the things which I always want to do. I couldn't do them
+before because everytime I remember or realize these things, something else
+takes my time and after some time I forgot about them, but they were always in
+the back of my mind. For example, I always want to work on my communication
+skills, it's not like I can't communcicate, but everytime I try to speak,
+everything just mixes in my mind and I almost always fumble. I would also like
+to work on my physique, make my body flexible and train for some martial art,
+it's always good for both the mind and body. Coordination between mind and body
+is very important, maybe one of the most important things.
 
-I try to do the stm32 projects and learn it's peripherals. After that I know I have do the bare-metal RTOS and BootLoader. But I can't do it for very long time. I think my daily time I put for this is only 1-hour. I daily think that I have to study 10+ hours, but somehow I can't get more than 1-2 hours. Every night, I just convince myself that tomorrow would be the day, but it's always the same. And even if I somehow study for 5-6 hours, it would be a one day thing. I don't know what to do.
+I strongly believe in learning using the simple building blocks. For example, we
+think computer is something magical, we could give inputs to the machine and it
+would spit out the expected output. But if we look into it, the building blocks
+of it are very simple to understand and it's just a very complex connectections
+of these blocks, that makes it look magical. There is a book
+`But How do it Know - J. Clark Scott`, in which the author makes a very simple
+computer from the building blocks itself. Much like in mathematics, we have
+axioms and using these axioms we prove theorems and then using them we prove
+more theorems and at some point we would prove a theorem which would many of the
+previous theorems. I don't mean that we always have to start from the zero, but
+atleast have a understanding of it would be suffice. Actually, Abstaction is
+more important if we talk about making the complex things.
 
-Let's see some of the options I can (have to) try to tackle this:
-* Make a very Big-Goal and then make a 7-day plan buffer to get near the final goal. It would look like that I still have much to do, and maybe I can then work.
-* If I plan something for today, I have to do it anyhow today. NO EXCUSES.
-* Don't play games, open youtube or instagram. Stay away from distractions. Just eat the food and get back to work. This is going to be a difficult task, but the fruits I bear after this are more than worth it.
-* Don't Overthink about the Future. Whatever is going to happen would happen. Don't try to control the future, maybe future holds much more than I can ever think of. I am not against thinking, but thinking about the future or jobs, it gives me stress, which doesn't allow me to work properly. And what good is this, we humans got only one life, this is my life. I am supposed to do whatever I want. The basic need for a human is the food and sleep. If I have that, I would survive.
-
----
-date: 2026-05-11
-title: A quiet Monday
-tags: reflection, morning
----
-
-Woke up before the alarm. Made coffee while the city was still deciding whether to be awake. There is something about early mornings that feels stolen — like time borrowed before the obligations arrive to claim it back.
-
-Spent an hour reading before opening the laptop. That ratio feels right. I want to protect it.
-
-> Some days are worth remembering exactly as they were, without annotation.
-
-In the afternoon, took a long walk through the old part of town. The bougainvillea on Tilak Road is blooming. Easy to forget how beautiful things are when you are always moving past them.
-
----
-date: 2026-05-08
-tags: ordinary
----
-
-Some days resist naming. The weather was neither good nor bad. The work moved, slowly. I ate lunch at my desk, which I keep telling myself I will stop doing.
-
-Tomorrow will be different. Or it won't. Either way, it will be tomorrow.
-
----
-date: 2026-05-03
-title: On finishing things
-tags: work, reflection
----
-
-There is a particular feeling that comes with finishing something — not excitement, exactly. More like the quiet after a long conversation. The thing existed only as potential for so long, and now it simply *is*.
-
-I shipped a small project today. Nobody will notice, probably. But I will know it exists, out in the world, doing what it is supposed to do. That is enough.
-
-- Pushed the final commit at 11pm
-- Wrote a short readme, which nobody reads
-- Closed the tab, made tea
-
----
-date: 2026-04-28
-title: Weekend in the old city
-tags: travel, life
----
-
-No agenda, no meetings. Just walked around the old quarter for most of the afternoon. The streets there have a particular quality — they were not built for efficiency, so they don't feel efficient.
-
-Had chai at a place with no name, just a hand-painted sign. The kind of place that has been there longer than anyone can remember and will probably outlast everything built this decade.
-
-> The best places have no online presence and no reason to acquire one.
-
----
-date: 2026-04-10
-tags: beginning
----
-
-Starting this. Not sure what it will become. Maybe nothing. Maybe something I look back on in a few years and find embarrassing in a useful way.
-
-The plan is to write when something feels worth keeping. No schedule, no pressure. Just a place for things that would otherwise disappear.
-
-Let's see.
+I would like to record this to always remind me that I've so much in life and so much to do.

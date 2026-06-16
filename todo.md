@@ -1,7 +1,5 @@
 - [ ] Watch Cosmos - A spacetime Odyssey
 - [ ] Upload all the Osho Audio Discourses to GDrive
-- [ ] Read Hindi NCERT books
-- [ ] Learn the Go Programming Language and make the font renderer project
 - [ ] See the Data-to-Video project and which components are required for this.
 - [ ] Learn about the system design
 - [ ] Learn about the RAG pipeline and make a project around it

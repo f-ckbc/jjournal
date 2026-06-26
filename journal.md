@@ -1,4 +1,25 @@
 ---
+date: 2026-06-26
+title: Fascinating dream
+tags: dream
+---
+Last Night I had a very wonderful dream. I don't exactly what it was, I just
+remember just a moment. I was standing in some kind of mountain and when I saw
+towards the sky, there is kind of very large hole in the sky and in that hole, I
+can see a very wonderful view of the stars. It was very shiny and very soothing
+to see, when I was in the dream.
+
+I don't know what was the meaning of this dream or any of my dreams. They just
+go with the flow and sometimes could do things unconsciously which we couldn't
+do consciously. For example, let's say want a solution for a particular problem
+and think many ways to solve that, but could figure it out. There is a
+possibility that our dreams could help us in this by giving us a new direction
+to think.
+
+I think I should give my mind a little rest after waking-up and try to remember
+my dreams. It's a nice habit to build.
+
+---
 date: 2026-06-17
 title: New Birth
 tags: reflection
